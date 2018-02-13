@@ -143,14 +143,23 @@ class Log {
 	   String st;
 	   try { 
 		   BufferedReader br = new BufferedReader(new FileReader("TaskManager.txt"));
-	    
+		   String TotalDescription = "";
+		   String Size = "";
 		   while ((st = br.readLine()) != null) {
 			   if(st.startsWith(name + " (description)")) {
 				   String delim = ": ";
 				   String[] tokens = st.split(delim);
-				   System.out.println("Description: " + tokens[1]);
+				   TotalDescription = TotalDescription + tokens[1];
 			   }
-	   	   } TotalTime(name);
+			   if(st.startsWith(name + " (size)")) {
+				   String delim = ": ";
+				   String[] tokens = st.split(delim);
+				   Size = tokens[1];
+			   }
+	   	   } 
+		   System.out.println("Size: " + Size);
+		   System.out.println("Description: " + TotalDescription);
+		   TotalTime(name);
    		   br.close(); 
 	   } catch(IOException e) {
            e.printStackTrace();
