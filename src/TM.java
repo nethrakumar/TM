@@ -49,6 +49,20 @@ class Log {
       return;
    }
    
+   /*Writes Task Size to file under the Task Name*/
+   public void WriteToFileSize(String size) {  //
+      try {
+         PrintWriter print_line = new PrintWriter(new FileOutputStream(new File("TaskManager.txt"),true));
+         //print_line.println(name);
+         print_line.println(name + " (size): "  + size);  //Size
+         print_line.close();
+      } catch(FileNotFoundException e) {
+         e.printStackTrace();
+      }
+      return;
+   }
+   
+   
    public void TotalTime(String name) throws NullPointerException{
 	   
 	   //String parse_time = null;
@@ -158,6 +172,7 @@ public class TM {
 	  if(args.length != 1) {       //Creates a ArrayOutOfBounds if you don't do this because Summary() can't use args[1], but Summary(name) does.
 		  name = args[1];          //Therefore name = args[1] only if you're using Summary(name), Start/Stop(name), and Describe(name, description)
   	  }
+	  //name = args[1];
 	  String cmd = args[0];
       String desc = args[2];
       String size = args[2];
@@ -222,12 +237,11 @@ public class TM {
    
    /*Gets the Task Name and Size*/
    public void Size(String name, String size) {
-	   System.out.println("hi");
 	   String taskName = name;
 	   System.out.println(taskName);
 	   System.out.println(size);
-	   //Log entry = new Log(name);
-	   //entry.WriteToFileSize(size);
+	   Log entry = new Log(name);
+	   entry.WriteToFileSize(size);
 	   return;
    }
    
