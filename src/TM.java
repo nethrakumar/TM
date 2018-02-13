@@ -174,12 +174,13 @@ public class TM {
   	  }
 	  //name = args[1];
 	  String cmd = args[0];
-      String desc = args[2];
-      String size = args[2];
+      String desc = ""; //args[2];
+      String size = ""; //args[2];
      
-      /*for(int i = 2; i < args.length; i++) {
+      for(int i = 2; i < args.length; i++) {
          desc = desc + args[i] + " ";
-      }*/
+         size = size + args[i] + " ";
+      }
       
       
       switch(cmd) {               //To switch between the Start, Stop, Describe, and Summary commands
