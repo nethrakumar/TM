@@ -193,13 +193,13 @@ public class TM {
       
       
       switch(cmd) {               //To switch between the Start, Stop, Describe, and Summary commands
-         case "Start": Start(name);
+         case "Start": startTask(name);
             break;
-         case "Stop": Stop(name);
+         case "Stop": stopTask(name);
             break;
-         case "Describe": Describe(name, desc);
+         case "Describe": describeTask(name, desc);
             break;
-         case "Size": Size(name, size);
+         case "Size": sizeTask(name, size);
       		break;
          case "Summary": {
         	 if(args.length == 1) {
@@ -212,7 +212,7 @@ public class TM {
    }
    
    /*Gets the Task Name and Start Time*/
-   public void Start(String name) {
+   public void startTask(String name) {
 	  int counts = numberOfTimes(name);
 	  if(counts % 2 == 1) {
 		  System.out.println("Please Stop before Starting again");
@@ -229,7 +229,7 @@ public class TM {
    }
    
    /*Gets the Task Name and Stop Time*/
-   public void Stop(String name) {
+   public void stopTask(String name) {
 	  int counts = numberOfTimes(name);
 	  if(counts % 2 == 0) {
 		  System.out.println("Please Start before Stopping");
@@ -246,7 +246,7 @@ public class TM {
    }
    
    /*Gets the Task Name and Size*/
-   public void Size(String name, String size) {
+   public void sizeTask(String name, String size) {
 	   String taskName = name;
 	   System.out.println(taskName);
 	   System.out.println(size);
@@ -256,7 +256,7 @@ public class TM {
    }
    
    /*Gets the Task Name and Description*/
-   public void Describe(String name, String desc) {
+   public void describeTask(String name, String desc) {
       String taskName = name;
       System.out.println(taskName);
       System.out.println(desc);
