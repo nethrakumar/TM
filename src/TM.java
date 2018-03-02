@@ -171,7 +171,7 @@ class Log {
 /* Main public class TM used to take in the commands and data to write into the file using class Log*/ 
 public class TM {
 
-   public static void main(String[] args) throws FileNotFoundException {
+   public static void main(String[] args) throws IOException {
       TM tm = new TM();
       tm.appMain(args);
 
@@ -183,6 +183,8 @@ public class TM {
   	  }
 	  //name = args[1];
 	  String cmd = args[0];
+	  String oldName = args[1];
+	  String newName = args[2];
       String desc = ""; //args[2];
       String size = ""; //args[2];
      
@@ -201,6 +203,8 @@ public class TM {
             break;
          case "Size": sizeTask(name, size);
       		break;
+         case "Rename": renameTask(oldName, newName);
+         	break;
          case "Delete": deleteTask(name);
          	break;
          case "Summary": {
@@ -267,8 +271,21 @@ public class TM {
       return;
    }
    
-   public void renameTask(String oldName, String newName) {
-	   
+   public void renameTask(String oldName, String newName) throws IOException {
+	   File file = new File("TaskManager.txt");
+	   File temp = File.createTempFile("file", ".txt", file.getParentFile());
+	   String charset = "UTF-8";
+	   String og = oldName;
+	   String rename = newName;
+	   BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), charset));
+	   PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(temp), charset));
+	   for(String line; (line = reader.readLine()) != null;) {
+		   line = line.replaceAll(og, rename);
+		   writer.println(line);
+	   }reader.close();
+	   writer.close();
+	   file.delete();
+	   temp.renameTo(file);
    }
    
    public void deleteTask(String name) throws IOException {
