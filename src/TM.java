@@ -265,6 +265,26 @@ public class TM {
       return;
    }
    
+   public void renameTask(String oldName, String newName) {
+	   
+   }
+   
+   public void deleteTask(String name) throws IOException {
+	   File file = new File("TaskManager.txt");
+	   File temp = File.createTempFile("file", ".txt", file.getParentFile());
+	   String charset = "UTF-8";
+	   String delete = name;
+	   BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), charset));
+	   PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(temp), charset));
+	   for(String line; (line = reader.readLine()) != null;) {
+		   line = line.replaceAll(delete, "//");
+		   writer.println(line);
+	   }reader.close();
+	   writer.close();
+	   file.delete();
+	   temp.renameTo(file);
+   }
+   
    /*Gets the summary of an individual task*/
    public void Summary(String name) {
 	  System.out.println("Entry: " + name);
