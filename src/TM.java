@@ -176,7 +176,7 @@ public class TM {
       tm.appMain(args);
 
    }
-   public void appMain(String[] args) throws FileNotFoundException {
+   public void appMain(String[] args) throws IOException {
 	  String name = "";
 	  if(args.length != 1) {       //Creates a ArrayOutOfBounds if you don't do this because Summary() can't use args[1], but Summary(name) does.
 		  name = args[1];          //Therefore name = args[1] only if you're using Summary(name), Start/Stop(name), and Describe(name, description)
@@ -201,6 +201,8 @@ public class TM {
             break;
          case "Size": sizeTask(name, size);
       		break;
+         case "Delete": deleteTask(name);
+         	break;
          case "Summary": {
         	 if(args.length == 1) {
         		 Summary();          //For a summary of all tasks in Task Manager
