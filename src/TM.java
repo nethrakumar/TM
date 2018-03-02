@@ -178,14 +178,19 @@ public class TM {
    }
    public void appMain(String[] args) throws IOException {
 	  String name = "";
+	  String oldName = "";
+	  String newName = "";
 	  if(args.length != 1) {       //Creates a ArrayOutOfBounds if you don't do this because Summary() can't use args[1], but Summary(name) does.
 		  name = args[1];          //Therefore name = args[1] only if you're using Summary(name), Start/Stop(name), and Describe(name, description)
-  	  }
+		  if(args.length == 3) {
+			  oldName = args[1];
+		  	  newName = args[2];
+		  }
+		  
+	  }
 	  //name = args[1];
 	  String cmd = args[0];
-	  String oldName = args[1];
-	  String newName = args[2];
-      String desc = ""; //args[2];
+	  String desc = ""; //args[2];
       String size = ""; //args[2];
      
       for(int i = 2; i < args.length; i++) {
@@ -344,6 +349,7 @@ public class TM {
 	   // Remove duplicates from ArrayList
 	   Set<String> hashTask = new HashSet<>();
 	   hashTask.addAll(taskList);
+	   hashTask.remove("//");
 	   taskList.clear();
 	   taskList.addAll(hashTask);
 	   System.out.println("//========================Entry's Below===========================//");
