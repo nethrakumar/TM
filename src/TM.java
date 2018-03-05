@@ -177,7 +177,9 @@ public class TM {
 
    }
    public void appMain(String[] args) throws IOException {
-	  String name = "";
+	  TMModel model = new TMModel(args);
+	  
+	  /*String name = "";
 	  String oldName = "";
 	  String newName = "";
 	  if(args.length != 1) {       //Creates a ArrayOutOfBounds if you don't do this because Summary() can't use args[1], but Summary(name) does.
@@ -219,11 +221,11 @@ public class TM {
         		 Summary(name);      //For a summary of an individual task in TaskManager
         	 }
          }  break;
-      }
+      }*/
    }
    
    /*Gets the Task Name and Start Time*/
-   public void startTask(String name) {
+   /*public void startTask(String name) {
 	  int counts = numberOfTimes(name);
 	  if(counts % 2 == 1) {
 		  System.out.println("Please Stop before Starting again");
@@ -237,10 +239,10 @@ public class TM {
 	      entry.WriteToFileTime(start);
 	      return;
 	  }
-   }
+   }*/
    
    /*Gets the Task Name and Stop Time*/
-   public void stopTask(String name) {
+   /*public void stopTask(String name) {
 	  int counts = numberOfTimes(name);
 	  if(counts % 2 == 0) {
 		  System.out.println("Please Start before Stopping");
@@ -254,29 +256,29 @@ public class TM {
 	      entry.WriteToFileTime(stop);
 	      return;
 	  }
-   }
+   }*/
    
    /*Gets the Task Name and Size*/
-   public void sizeTask(String name, String size) {
+   /*public void sizeTask(String name, String size) {
 	   String taskName = name;
 	   System.out.println(taskName);
 	   System.out.println(size);
 	   Log entry = new Log(name);
 	   entry.WriteToFileSize(size);
 	   return;
-   }
+   }*/
    
    /*Gets the Task Name and Description*/
-   public void describeTask(String name, String desc) {
+   /*public void describeTask(String name, String desc) {
       String taskName = name;
       System.out.println(taskName);
       System.out.println(desc);
       Log entry = new Log(name);
       entry.WriteToFileDescr(desc);
       return;
-   }
+   }*/
    
-   public void renameTask(String oldName, String newName) throws IOException {
+   /*public void renameTask(String oldName, String newName) throws IOException {
 	   File file = new File("TaskManager.txt");
 	   File temp = File.createTempFile("file", ".txt", file.getParentFile());
 	   String charset = "UTF-8";
@@ -291,9 +293,9 @@ public class TM {
 	   writer.close();
 	   file.delete();
 	   temp.renameTo(file);
-   }
+   }*/
    
-   public void deleteTask(String name) throws IOException {
+   /*public void deleteTask(String name) throws IOException {
 	   File file = new File("TaskManager.txt");
 	   File temp = File.createTempFile("file", ".txt", file.getParentFile());
 	   String charset = "UTF-8";
@@ -307,10 +309,18 @@ public class TM {
 	   writer.close();
 	   file.delete();
 	   temp.renameTo(file);
+   }*/
+   
+   public void taskSizes() {
+	   
+   }
+   
+   public void taskNamesForSize() {
+	   
    }
    
    /*Gets the summary of an individual task*/
-   public void Summary(String name) {
+   /*public void Summary(String name) {
 	  System.out.println("Entry: " + name);
 	  int counts = numberOfTimes(name);
 		  if(counts % 2 == 1) {
@@ -325,10 +335,14 @@ public class TM {
 	      }
 	      return;
       }
+   }*/
+   
+   public void Stats(String size) {
+	   
    }
    
    /*Gets the summary of all tasks*/
-   public void Summary() throws FileNotFoundException{ 
+   /*public void Summary() throws FileNotFoundException{ 
 	   String fileName = "TaskManager.txt";
 	   List<String> taskList = new ArrayList<String>();
 	   try {
@@ -360,9 +374,9 @@ public class TM {
 		   System.out.println();
 	   }
 	   System.out.println("//================================================================//");
-   }
+   }*/
    
-   public int numberOfTimes(String name) {
+   /*public int numberOfTimes(String name) {
 	   String fileName = "TaskManager.txt";
 	   int count = 0;
 	   try {
@@ -381,5 +395,5 @@ public class TM {
 		   //System.out.println("Error reading file '" + fileName + "'");
 	   }
 	   return count;
-   }
+   }*/
 }
