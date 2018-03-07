@@ -165,32 +165,103 @@ public class TMModel {
 	}
 	   
 	public void Stats(long XS[], int XSL, long S[], int SL, long M[], int ML, long L[], int LL, long XL[], int XLL) {
-		System.out.println(SL);
-		System.out.println(Arrays.toString(S));
-		int x = 0;
+		if(XSL > 1) {
+			System.out.println("XS Task Statistics:");
+			long minTime = min(XS, XSL);
+			String time = convertTime(minTime);
+		    System.out.println("Min Time: " + time);
+		    
+		    long maxTime = max(XS, XSL);
+			time = convertTime(maxTime);
+		    System.out.println("Max Time: " + time);
+		    
+		    long avgTime = average(XS, XSL);
+			time = convertTime(avgTime);
+		    System.out.println("Avg Time: " + time);
+		}
+		if(SL > 1) {
+			System.out.println("S Task Statistics:");
+			long minTime = min(S, SL);
+			String time = convertTime(minTime);
+		    System.out.println("Min Time: " + time);
+		    
+		    long maxTime = max(S, SL);
+			time = convertTime(maxTime);
+		    System.out.println("Max Time: " + time);
+		    
+		    long avgTime = average(S, SL);
+			time = convertTime(avgTime);
+		    System.out.println("Avg Time: " + time);
+		}
+		if(ML > 1) {
+			System.out.println("M Task Statistics:");
+			long minTime = min(M, ML);
+			String time = convertTime(minTime);
+		    System.out.println("Min Time: " + time);
+		    
+		    long maxTime = max(M, ML);
+			time = convertTime(maxTime);
+		    System.out.println("Max Time: " + time);
+		    
+		    long avgTime = average(M, ML);
+			time = convertTime(avgTime);
+		    System.out.println("Avg Time: " + time);
+		}
+		if(LL > 1) {
+			System.out.println("L Task Statistics:");
+			long minTime = min(L, LL);
+			String time = convertTime(minTime);
+		    System.out.println("Min Time: " + time);
+		    
+		    long maxTime = max(L, LL);
+			time = convertTime(maxTime);
+		    System.out.println("Max Time: " + time);
+		    
+		    long avgTime = average(L, LL);
+			time = convertTime(avgTime);
+		    System.out.println("Avg Time: " + time);
+		}
+		if(XLL > 1) {
+			System.out.println("XL Task Statistics:");
+			long minTime = min(XL, XLL);
+			String time = convertTime(minTime);
+		    System.out.println("Min Time: " + time);
+		    
+		    long maxTime = max(XL, XLL);
+			time = convertTime(maxTime);
+		    System.out.println("Max Time: " + time);
+		    
+		    long avgTime = average(XL, XLL);
+			time = convertTime(avgTime);
+		    System.out.println("Avg Time: " + time);
+		}
+		
+	}
+	public String convertTime(long x) {
 		long seconds = x / 1000 % 60;
 		long minutes = x / (60 * 1000) % 60;
 		long hours = x / (60 * 60 * 100) % 24;
-		//System.out.println("Total Time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds");
+		String converted = hours + " hours, " + minutes + " minutes, " + seconds + " seconds ";
+		return converted;
 	}
 	
 	public long min(long Array[], int length) {
 		long minTime = Array[0];
-		for(int i = 1; i < length; i++) {
+		for(int i = 0; i < length; i++) {
 			if(Array[i] < minTime) {
 				minTime = Array[i];
 			}
-		}
+		}//System.out.println(minTime);
 		return minTime;
 	}
 	
 	public long max(long Array[], int length) {
 		long maxTime = Array[0];
-		for(int i = 1; i > length; i++) {
+		for(int i = 0; i < length; i++) {
 			if(Array[i] > maxTime) {
 				maxTime = Array[i];
 			}
-		}
+		}//System.out.println(maxTime);
 		return maxTime;
 			
 	}
