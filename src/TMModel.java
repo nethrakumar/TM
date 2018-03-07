@@ -165,7 +165,44 @@ public class TMModel {
 	}
 	   
 	public void Stats(long XS[], int XSL, long S[], int SL, long M[], int ML, long L[], int LL, long XL[], int XLL) {
-		
+		System.out.println(SL);
+		System.out.println(Arrays.toString(S));
+		int x = 0;
+		long seconds = x / 1000 % 60;
+		long minutes = x / (60 * 1000) % 60;
+		long hours = x / (60 * 60 * 100) % 24;
+		//System.out.println("Total Time: " + hours + " hours, " + minutes + " minutes, " + seconds + " seconds");
+	}
+	
+	public long min(long Array[], int length) {
+		long minTime = Array[0];
+		for(int i = 1; i < length; i++) {
+			if(Array[i] < minTime) {
+				minTime = Array[i];
+			}
+		}
+		return minTime;
+	}
+	
+	public long max(long Array[], int length) {
+		long maxTime = Array[0];
+		for(int i = 1; i > length; i++) {
+			if(Array[i] > maxTime) {
+				maxTime = Array[i];
+			}
+		}
+		return maxTime;
+			
+	}
+	
+	public long average(long Array[], int length) {
+		long sum = 0;
+		long average = 0;
+		for(int i = 0; i < length; i++) {
+			sum = sum + Array[i];
+		}
+		average = sum/length;
+		return average;
 	}
 	   
 	/*Gets the summary of all tasks*/
@@ -212,12 +249,12 @@ public class TMModel {
 			 Summary(name);
 			 long x = Elapsed(name);
 			 String s = Size(name);
-			 switch(s) {               //To switch between the Start, Stop, Describe, and Summary commands
+			 switch(s) {  
 		     	case "XS": 
 		     		XS[XSL] = x;
 		         	XSL++;
 		            break;
-		        case "S": 
+		        case "S":
 		        	S[SL] = x;
 			        SL++; 
 		            break;
@@ -233,10 +270,11 @@ public class TMModel {
 		        	XL[XLL] = x;
 			        XLL++;
 			        break;
-			 }
-			   Stats(XS, XSL, S, SL, M, ML, L, LL, XL, XLL);   
+			 }   
 			 System.out.println();
 		 }
+		 System.out.println("//=============================STATS==============================//");
+		 Stats(XS, XSL, S, SL, M, ML, L, LL, XL, XLL);
 		 System.out.println("//================================================================//");
 	}
 
@@ -253,7 +291,8 @@ public class TMModel {
 				String delim = ": ";
 				String[] tokens = line.split(delim);
 				if(tokens[0].equals(name_parse)) {
-					tokens[1] = size;
+					String s = tokens[1];
+					size = s.replaceAll("\\s","");
 				}
 			 }
 			 br1.close();
@@ -264,7 +303,6 @@ public class TMModel {
 			   //System.out.println("Error reading file '" + fileName + "'");
 		}
 		return size;
-		
 	}
 	   
 	   
